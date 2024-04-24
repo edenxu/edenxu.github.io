@@ -139,10 +139,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://edenxu.github.io/cn/Normalizing-Numeric-Values/">
+  <link rel="canonical" href="https://edenxu.github.io/cn/关于习惯的一点想法/">
   <title>
     
-      对数据集中的数据进行归一化处理 - Less is more | Simplify Living
+      关于习惯的一点想法 - Less is more | Simplify Living
     
   </title>
 <meta name="generator" content="Hexo 7.1.1"></head>
@@ -352,19 +352,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-page: url('//img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: url('https://cdnjson.com/images/2024/04/24/newhome_bg2814a2e8596a4178.jpg');
+      --intro-header-background-image-url-page: url('/https://cdnjson.com/images/2024/04/24/newhome_bg2814a2e8596a4178.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/newhome_bg.jpg');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('//img/header_img/newhome_bg.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://cdnjson.com/images/2024/04/24/newhome_bg2814a2e8596a4178.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/https://cdnjson.com/images/2024/04/24/newhome_bg2814a2e8596a4178.jpg');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('/img/header_img/newhome_bg.jpg'); */
+        /* background-image: url('https://cdnjson.com/images/2024/04/24/newhome_bg2814a2e8596a4178.jpg'); */
       
     }
 
@@ -389,14 +389,14 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+              <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
               
             </div>
-            <h1>对数据集中的数据进行归一化处理</h1>
+            <h1>关于习惯的一点想法</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by Hao & Ying on
-              2023-01-06
+              2024-04-24
             </span>
 
 
@@ -408,7 +408,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">787</span> In Total
+              Words <span class="post-count">682</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -470,31 +470,21 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h3 id="为什么需要归一化处理">为什么需要归一化处理</h3>
-<p>在上一篇关于<a href="/cn/KNN-Pyhton-Classify/" title="KNN（K-近邻）的Python分类器函数">KNN（K-近邻）的Python分类器函数</a>的文章里我们讲到了两个样本点之间距离的计算方法。但是仍然存在一个潜在的问题就是，样本集中多个特征的取值范围可能差距很大。假设我们的样本其中包含有账户余额、负债率两个指标，账户余额的数值一般会比较大，而负债率可能会是一个小于1的数值。此时，如果将这两个数代入到距离计算公式当中去进行距离计算【例如：A、B两点之间的距离为：((x1-x2)^2 + (y1-y2)^2)^0.5】，我们会发现负债率这个特征将会被账户余额这个特征严重弱化，账户余额这个特征在公式中起了决定性作用。但是，实际上这并不是我们想要的结果，我们本意是希望两个特征都同等重要。这个时候，我们就需要对特征值进行<strong>归一化处理</strong>，将每一个特征的数值都重新转换成为一个从0到1间的数值，这样就避免之前所描述问题的发生。</p>
-<h3 id="归一化处理的方法">归一化处理的方法</h3>
-<p>归一化后的值 = （归一化前的值 - 当前特征的最小值） / （当前特征的最大值 - 当前特征的最小值）<br>
-即：我们需要分别找出数据集中每一个特征（即：对应矩阵中每一列）的最大值和最小值，然后再按公式所描述的方式进行数据的归一化处理。</p>
-<h3 id="归一化函数代码">归一化函数代码</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">autoNorm</span>(<span class="params">dataSet</span>):</span><br><span class="line">    <span class="comment"># 返回矩阵中每一列元素的最小值 【参数为1时是行的最小值】结果为：1行N列</span></span><br><span class="line">    minVals = dataSet.<span class="built_in">min</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 返回矩阵中每一列元素的最大值 【参数为1时是行的最大值】结果为：1行N列</span></span><br><span class="line">    maxVals = dataSet.<span class="built_in">max</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="comment"># 最大值-最小值的矩阵差值 结果为：1行N列</span></span><br><span class="line">    ranges = maxVals - minVals</span><br><span class="line">    <span class="comment"># 创建一个和dataSet大小一致的矩阵，并用0进行填充</span></span><br><span class="line">    normDataSet = zeros(shape(dataSet))</span><br><span class="line">    <span class="comment"># 获取矩阵的行数</span></span><br><span class="line">    m = dataSet.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># tile(minVals, (m, 1)) 将1行N列的最小值，拓展成M行,即：M*N的矩阵</span></span><br><span class="line">    <span class="comment"># 然后用dataSet的每一个元素去和最小值矩阵相减，实现（归一化前的值 - 当前特征的最小值）的效果</span></span><br><span class="line">    normDataSet = dataSet - tile(minVals, (m, <span class="number">1</span>))</span><br><span class="line">    <span class="comment"># 同理，实现除以（当前特征的最大值 - 当前特征的最小值）的效果</span></span><br><span class="line">    normDataSet = normDataSet / tile(ranges, (m, <span class="number">1</span>))</span><br><span class="line">    <span class="keyword">return</span> normDataSet, ranges, minVals</span><br></pre></td></tr></table></figure>
-<h3 id="需要注意的一些内容">需要注意的一些内容</h3>
-<ol>
-<li>主要注意及掌握Python相关函数，比如min、max、tile等函数的用法及返回数据的格式。</li>
-<li>进一步体会矩阵运算在数据处理上带来的便利。主要的思想就是：创建一个和需要处理的数据集一样规格的矩阵（一般默认用0或者1进行初始化），然后再按位进行矩阵的数值运算，直至数据处理成我们想要的形式。</li>
-</ol>
+        <h3 id="习惯是什么？">习惯是什么？</h3>
+<p>昨天（4月23日）是世界读书日，儿子的学校要求每个小朋友都需要制作一个关于世界读书日主题的手抄报。于是两父子就开始在网上搜集各种资料，包括图片、文字、图案等等。其中有小段文字忽然对我产生了很大的冲击。内容是这样的：什么是习惯？习惯就是坚持每天在固定的时间做一件同样的事情，这就是习惯。而阅读的习惯，就是养成每天读书的习惯，比如可以在每天睡觉前的十五分钟进行阅读。</p>
+<h3 id="小小的文字，大大的触动">小小的文字，大大的触动</h3>
+<p>其实，我是在看着儿子往他自己的手抄报上抄内容的时候，才无意中发现这几句话的。我不知道这几句话对于儿子来说，有什么感悟。但是对于我自己，却是被深深地触动了，这种感觉就像是沉睡了很久，然后忽然被某个人不小心的一碰，就清醒过来了。人的一生，其实无时无刻都在受各种习惯所影响，这一辈子所能达到的高度、去到的远方直接取决于这些似乎微不足道的小习惯。在这些小习惯日积月累的影响下，有的人养成了拖拖拉拉的习惯，有的人却保持着积极主动、自己去掌握主动权的习惯，不同的习惯造就了不一样的处事作风。前者在每一次所面临的困难和工作任务中，习惯于在最后的时间点完成即可，一旦有任何差错整体的进度将会受到影响；而往往后者总会积极地提前或者超乎要求质量去完成相关的工作，把主动权留在自己手里，让自己有更充裕的时间把这项工作做得更好。所以，最终也使得不同习惯的人在多年以后，在人生的各个方面产生了很大的差距。</p>
+<h3 id="小习惯、大作用">小习惯、大作用</h3>
+<p>说到这里，忽然想起来其实针对习惯这个东西，国内外有不少的专家和学者都写了很多书来专门讨论微习惯对一个人的影响，以及如何去培养更多好的微习惯，进而去不断遇见更好的自己。也许，我们每个人都应该从现在的每一刻做起，培养起好习惯，戒掉坏习惯。不如，就从尽量避免掏出手机的次数、多拿起书本读书这个习惯开始吧？</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/人生是一场修行/" data-toggle="tooltip" data-placement="top" title="人生是一场修行">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/KNN-Pyhton-Classify/" data-toggle="tooltip" data-placement="top" title="KNN（K-近邻）的Python分类器函数">Next Post &rarr;</a>
+            <a href="/cn/无法被电脑识别的kindle/" data-toggle="tooltip" data-placement="top" title="无法被电脑识别的kindle">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -543,7 +533,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=对数据集中的数据进行归一化处理&body=Hi,I found this website and thought you might like it https://edenxu.github.io/cn/Normalizing-Numeric-Values/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=关于习惯的一点想法&body=Hi,I found this website and thought you might like it https://edenxu.github.io/cn/关于习惯的一点想法/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -578,7 +568,7 @@
       repo: '',
       owner: '',
       admin: '',
-      id: 'Fri Jan 06 2023 00:56:02 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Apr 24 2024 15:50:24 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -631,7 +621,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%BD%92%E4%B8%80%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">为什么需要归一化处理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%E5%A4%84%E7%90%86%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">归一化处理的方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BD%92%E4%B8%80%E5%8C%96%E5%87%BD%E6%95%B0%E4%BB%A3%E7%A0%81"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">归一化函数代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%AE%B9"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">需要注意的一些内容</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B9%A0%E6%83%AF%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">习惯是什么？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%96%87%E5%AD%97%EF%BC%8C%E5%A4%A7%E5%A4%A7%E7%9A%84%E8%A7%A6%E5%8A%A8"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">小小的文字，大大的触动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B0%8F%E4%B9%A0%E6%83%AF%E3%80%81%E5%A4%A7%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">小习惯、大作用</span></a></li></ol>
         
         </div>
       </aside>
@@ -654,7 +644,7 @@
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#Machine Learning" title="Machine Learning">Machine Learning</a>
+            <a class="tag" href="/tags/#随笔" title="随笔">随笔</a>
             
           </div>
         </section>
