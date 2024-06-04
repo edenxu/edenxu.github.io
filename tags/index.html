@@ -457,7 +457,7 @@
       <!-- 标签云 -->
       <div id='tag_cloud' class="tags">
         
-        <a href="#随笔" title="随笔" rel="11">随笔</a>
+        <a href="#随笔" title="随笔" rel="12">随笔</a>
         
         <a href="#Machine Learning" title="Machine Learning" rel="2">Machine Learning</a>
         
@@ -606,6 +606,19 @@
           <a href="/cn/人生本没有标准答案/">
             <h2 class="post-title">
               人生没有标准答案
+              
+              -- cn
+              
+            </h2>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
+          <a href="/cn/顺其自然，一切都是最好的安排/">
+            <h2 class="post-title">
+              顺其自然，一切都是最好的安排
               
               -- cn
               
@@ -1151,5 +1164,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
