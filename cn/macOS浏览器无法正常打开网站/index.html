@@ -145,7 +145,7 @@
       macOS浏览器无法正常打开网站 - Less is more | Simplify Living
     
   </title>
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 
 <!-- hack iOS CSS :active style -->
@@ -244,8 +244,6 @@
 
           
           
-          
-          
           <li>
             <a href="/about/">
               
@@ -258,9 +256,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -268,10 +266,12 @@
           
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -470,19 +470,24 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>今天开启MacMini后，发现在Terminal中可以正常使用SSH登陆远程主机，Ping指令尝试Ping百度等网站也可以正常得到响应。但是想要通过浏览器访问网站却无法打开任何网站，包括访问192.168.1.1这个路由器后台都不可以。</p>
-<h3 id="尝试处理过程"><a href="#尝试处理过程" class="headerlink" title="尝试处理过程"></a>尝试处理过程</h3><ol>
+        <h3 id="问题描述">问题描述</h3>
+<p>今天开启MacMini后，发现在Terminal中可以正常使用SSH登陆远程主机，Ping指令尝试Ping百度等网站也可以正常得到响应。但是想要通过浏览器访问网站却无法打开任何网站，包括访问192.168.1.1这个路由器后台都不可以。</p>
+<h3 id="尝试处理过程">尝试处理过程</h3>
+<ol>
 <li>重启MacMini的Wifi服务，无法得到解决</li>
 <li>重启路由器重新加入网络，问题仍然无法得到解决。</li>
 </ol>
-<h3 id="最终解决方式"><a href="#最终解决方式" class="headerlink" title="最终解决方式"></a>最终解决方式</h3><p>在Finder—Macintosh HD—Library—Preferences—SystemConfiguration下,删除如下文件：</p>
+<h3 id="最终解决方式">最终解决方式</h3>
+<p>在Finder–Macintosh HD–Library–Preferences–SystemConfiguration下,删除如下文件：</p>
 <ol>
 <li>com.apple.airport.preferences.plist</li>
 <li>com.apple.wifi.message-tracer.plist</li>
 <li>NetworkInterfaces.plist</li>
-<li>preferences.plist<br>删除文件后，到回收站清空文件，并重启系统。</li>
+<li>preferences.plist<br>
+删除文件后，到回收站清空文件，并重启系统。</li>
 </ol>
-<h3 id="处理结果"><a href="#处理结果" class="headerlink" title="处理结果"></a>处理结果</h3><p>重启系统后等待重新加入Wifi网络，尝试通过浏览器访问网站，可以正常访问，问题得到解决。</p>
+<h3 id="处理结果">处理结果</h3>
+<p>重启系统后等待重新加入Wifi网络，尝试通过浏览器访问网站，可以正常访问，问题得到解决。</p>
 
 
         <hr>
@@ -753,7 +758,7 @@
         <p class="copyright text-muted">
           Copyright &copy;
           Hao &amp; Ying
-          2023
+          2025
           <br>
           Theme by
           <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
